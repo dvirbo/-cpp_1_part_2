@@ -5,16 +5,40 @@
 #include "mat.hpp"
 #include <vector>
 
-
 using namespace std;
 using namespace ariel;
+
+//  const char symbols[] = {'!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '=', '+', '`', '~'};
+
+// int check_char_vaild(char c)
+// {
+
+//     for (int i = 0; i < 14; i++)
+//     {
+//         if (c == symbols[i])
+//         {
+//             return 1;
+//         }
+//     }
+//     return 0;
+// }
+
 /*
 This method check if the components of the mat are valid by defenition
-return "Good input" if the data is valid, else- return the correct message 
+return "Good input" if the data is valid, else- return the correct message
  */
 string check_validity(int col, int row, char a, char b)
 {
     string ans = "Good input";
+     if (a < '!' || b < '!' || a > '~' || b > '~')
+     {
+       //  cout << a << "..,.." << b << endl;
+         return "unvalid symbol";
+     }
+    // if (!check_char_vaild(a) && !check_char_vaild(b))
+    // {
+    //     return "unvalid symbol";
+    // }
 
     if (col % 2 == 0 || row % 2 == 0)
     {
@@ -30,6 +54,7 @@ string check_validity(int col, int row, char a, char b)
     {
         return "row num is negetive-must be positive";
     }
+
     return ans;
 }
 /*
@@ -40,18 +65,18 @@ string fill(int row, int col, char a, char b)
 {
 
     int i = 0;
-    int j = 0;   
+    int j = 0;
     int sRow = 0; // starting row index
     int sCol = 0; // starting column index
 
     // Store given number of rows and columns for the printing:
-    int tRow = row; // temp val that contain row num 
+    int tRow = row; // temp val that contain row num
     int tCol = col; // temp val that contain col num
 
-    vector<vector<char>> vec( a , vector<char> (b)); 
+    vector<vector<char>> vec(a, vector<char>(b));
 
-    char sigh = a;    // init the char
-    string str;         // the final string that we're return
+    char sigh = a; // init the char
+    string str;    // the final string that we're return
 
     while (sRow < row && sCol < col)
     {
