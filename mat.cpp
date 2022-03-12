@@ -30,11 +30,11 @@ return "Good input" if the data is valid, else- return the correct message
 string check_validity(int col, int row, char a, char b)
 {
     string ans = "Good input";
-     if (a < '!' || b < '!' || a > '~' || b > '~')
-     {
-       //  cout << a << "..,.." << b << endl;
-         return "unvalid symbol";
-     }
+    if (a < '!' || b < '!' || a > '~' || b > '~')
+    {
+        //  cout << a << "..,.." << b << endl;
+        return "unvalid symbol";
+    }
     // if (!check_char_vaild(a) && !check_char_vaild(b))
     // {
     //     return "unvalid symbol";
@@ -129,6 +129,18 @@ string fill(int row, int col, char a, char b)
     }
     return str;
 }
+/*  hleper func that avoid error of seg fault (the vector trow error when the col num is 1..)
+ */
+string fillTmp(char c, int s)
+{
+    string ans;
+    while (s > 0)
+    {
+        ans += 'c';
+        s--;
+    }
+    return ans;
+}
 
 namespace ariel
 {
@@ -136,11 +148,16 @@ namespace ariel
     string mat(int col, int row, char a, char b)
     {
         string check = check_validity(col, row, a, b);
+        string ans;
         if (check != "Good input")
         {
             throw invalid_argument(check);
         }
-        string ans = fill(row, col, a, b);
+        if (row == 1)
+        {
+            ans = fillTmp(a, col - 1);
+        }
+        ans = fill(row, col, a, b);
         return ans;
     }
 

@@ -19,8 +19,8 @@ main: Main.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 # Ohad Madei
-# StudentTest1.cpp:  
-# 	curl https://raw.githubusercontent.com/Ohad-Ma/carpets-maker-1/master/Test.cpp > $@
+ StudentTest1.cpp:  
+ 	curl https://raw.githubusercontent.com/Ohad-Ma/carpets-maker-1/master/Test.cpp > $@
 
 # Dvir Biton
   StudentTest2.cpp:   
