@@ -8,21 +8,6 @@
 using namespace std;
 using namespace ariel;
 
-//  const char symbols[] = {'!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '=', '+', '`', '~'};
-
-// int check_char_vaild(char c)
-// {
-
-//     for (int i = 0; i < 14; i++)
-//     {
-//         if (c == symbols[i])
-//         {
-//             return 1;
-//         }
-//     }
-//     return 0;
-// }
-
 /*
 This method check if the components of the mat are valid by defenition
 return "Good input" if the data is valid, else- return the correct message
@@ -35,11 +20,7 @@ string check_validity(int col, int row, char a, char b)
         //  cout << a << "..,.." << b << endl;
         return "unvalid symbol";
     }
-    // if (!check_char_vaild(a) && !check_char_vaild(b))
-    // {
-    //     return "unvalid symbol";
-    // }
-
+    
     if (col % 2 == 0 || row % 2 == 0)
     {
         return "Mat size is always odd";

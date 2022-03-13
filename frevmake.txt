@@ -7,11 +7,11 @@ HEADERS=mat.hpp
 OBJECTS=mat.o
 SOURCES=mat.cpp
 
-run: demo 
+run: main 
 	./$^
 
-demo: Demo.o $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ -o demo
+main: main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o main
 
 test: TestCounter.o Test.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o test
