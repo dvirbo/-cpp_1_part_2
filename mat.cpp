@@ -20,8 +20,8 @@ string check_validity(int col, int row, char a, char b)
         //  cout << a << "..,.." << b << endl;
         return "unvalid symbol";
     }
-    
-    if (col % 2 == 0 || row % 2 == 0)
+
+    if ((col * row) % 2 == 0)
     {
         return "Mat size is always odd";
     }
@@ -112,12 +112,24 @@ string fill(int row, int col, char a, char b)
 }
 /*  hleper func that avoid error of seg fault (the vector trow error when the col num is 1..)
  */
-string fillTmp(char c, int s)
+string fillrow(char c, int s)
 {
     string ans;
     while (s > 0)
     {
-        ans += 'c';
+        ans += c;
+        ans += '\n';
+        s--;
+    }
+    return ans;
+}
+
+string fillcol(char c, int s)
+{
+    string ans;
+    while (s > 0)
+    {
+        ans += c;
         s--;
     }
     return ans;
@@ -130,14 +142,23 @@ namespace ariel
     {
         string check = check_validity(col, row, a, b);
         string ans;
+
         if (check != "Good input")
         {
             throw invalid_argument(check);
         }
+
+        if (col == 1)
+        {
+            ans = fillcol(a, row);
+            return ans;
+        }
         if (row == 1)
         {
-            ans = fillTmp(a, col - 1);
+            ans = fillrow(a, col);
+            return ans;
         }
+
         ans = fill(row, col, a, b);
         return ans;
     }
